@@ -16,6 +16,7 @@ export const inputs = [
     col: "col-span-2",
     operator: clearOperator,
     identifier: "clear",
+    id: "clear",
   },
   {
     input: "/",
@@ -24,6 +25,7 @@ export const inputs = [
     operator: functionOperator,
     operation: div,
     identifier: "operator",
+    id: "divide",
   },
   {
     input: "*",
@@ -32,6 +34,7 @@ export const inputs = [
     operator: functionOperator,
     operation: mult,
     identifier: "operator",
+    id: "multiply",
   },
   {
     input: "7",
@@ -39,6 +42,7 @@ export const inputs = [
     col: "1",
     operator: numberOperator,
     identifier: "number",
+    id: "seven",
   },
   {
     input: "8",
@@ -46,6 +50,7 @@ export const inputs = [
     col: "1",
     operator: numberOperator,
     identifier: "number",
+    id: "eight",
   },
   {
     input: "9",
@@ -53,6 +58,7 @@ export const inputs = [
     col: "1",
     operator: numberOperator,
     identifier: "number",
+    id: "nine",
   },
   {
     input: "-",
@@ -61,6 +67,7 @@ export const inputs = [
     operator: functionOperator,
     operation: sub,
     identifier: "operator",
+    id: "subtract",
   },
   {
     input: "4",
@@ -68,6 +75,7 @@ export const inputs = [
     col: "1",
     operator: numberOperator,
     identifier: "number",
+    id: "four",
   },
   {
     input: "5",
@@ -75,6 +83,7 @@ export const inputs = [
     col: "1",
     operator: numberOperator,
     identifier: "number",
+    id: "five",
   },
   {
     input: "6",
@@ -82,6 +91,7 @@ export const inputs = [
     col: "1",
     operator: numberOperator,
     identifier: "number",
+    id: "six",
   },
   {
     input: "+",
@@ -90,6 +100,7 @@ export const inputs = [
     operator: functionOperator,
     operation: sum,
     identifier: "operator",
+    id: "add",
   },
   {
     input: "1",
@@ -97,6 +108,7 @@ export const inputs = [
     col: "1",
     operator: numberOperator,
     identifier: "number",
+    id: "one",
   },
   {
     input: "2",
@@ -104,6 +116,7 @@ export const inputs = [
     col: "1",
     operator: numberOperator,
     identifier: "number",
+    id: "two",
   },
   {
     input: "3",
@@ -111,6 +124,7 @@ export const inputs = [
     col: "1",
     operator: numberOperator,
     identifier: "number",
+    id: "three",
   },
   {
     input: "=",
@@ -118,6 +132,7 @@ export const inputs = [
     col: "1",
     operator: equalsOperator,
     identifier: "operator",
+    id: "equals",
   },
   {
     input: "0",
@@ -125,6 +140,7 @@ export const inputs = [
     col: "col-span-2",
     operator: numberOperator,
     identifier: "number",
+    id: "zero",
   },
   {
     input: ".",
@@ -132,5 +148,6 @@ export const inputs = [
     col: "1",
     operator: numberOperator,
     identifier: "number",
+    id: "decimal",
   },
 ]

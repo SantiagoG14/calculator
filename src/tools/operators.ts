@@ -8,18 +8,36 @@ export type stateType = {
 }
 
 export function functionOperator(input: input, s: stateType) {
-  if (s.bank === "") {
+  if (s.bank === "" || s.curOperator === undefined) {
     return {
       ...s,
       bank: s.display,
       history: s.history + " " + input.input + " ",
       curOperator: () => input.operation,
     }
-  } else if (/[+ * / -]$/.test(s.history)) {
+  } else if (s.history.includes("=")) {
     return {
       ...s,
-      history: s.history.slice(0, s.history.length - 1) + input.input,
+      bank: s.display,
+      history: s.display + " " + input.input + " ",
+      curOperator: () => input.operation,
     }
+  } else if (/[+ * / -]$/.test(s.history)) {
+    return input.input === "-"
+      ? {
+          ...s,
+          curOperator: () => s.curOperator,
+          history: s.history + input.input,
+          display: "-",
+        }
+      : {
+          ...s,
+          curOperator: () => input.operation,
+          history: s.display.endsWith("-")
+            ? s.history.slice(0, s.history.length - 3) + input.input + " "
+            : s.history.slice(0, s.history.length - 2) + input.input + " ",
+          display: s.display === "-" ? "" : s.display,
+        }
   } else {
     if (s.curOperator === undefined) {
       throw new TypeError("no such operation")
@@ -43,10 +61,16 @@ export function functionOperator(input: input, s: stateType) {
 }
 
 export function numberOperator(input: input, s: stateType) {
-  if (s.display === "" && input.input === "0") {
+  if (
+    (s.display === "0" && input.input === "0") ||
+    (input.input == "." && s.display.includes("."))
+  ) {
     return { ...s }
   }
-  return /[+ * / -]$/.test(s.history) && !s.history.includes("=")
+  return (/[+ * / -]$/.test(s.history) &&
+    !s.history.includes("=") &&
+    s.display !== "-") ||
+    s.display === "0"
     ? {
         ...s,
         history: s.history + input.input,
@@ -56,9 +80,9 @@ export function numberOperator(input: input, s: stateType) {
     : s.history.includes("=")
     ? {
         ...s,
-        history: "",
+        history: input.input === "0" ? "" : input.input,
         display: input.input,
-        curOperator: () => s.curOperator,
+        curOperator: undefined,
       }
     : {
         ...s,
@@ -70,7 +94,7 @@ export function numberOperator(input: input, s: stateType) {
 
 export function clearOperator(input: input, s: stateType) {
   return {
-    display: "",
+    display: "0",
     bank: "",
     history: "",
     curOperator: undefined,

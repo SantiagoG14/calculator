@@ -9,6 +9,7 @@ export type input = {
   row: string
   col: string
   identifier: string
+  id: string
   operation: operation | undefined
   operator: operator
 }
@@ -16,7 +17,7 @@ export type input = {
 type operator = (input: input, s: stateType) => stateType
 
 function App() {
-  const [display, setDisplay] = useState("")
+  const [display, setDisplay] = useState("0")
   const [curOperator, setCurOperator] = useState<operation>()
   const [history, setHistory] = useState("")
   const bank = useRef("")
@@ -41,7 +42,10 @@ function App() {
           <div className=" h-6 text-end text-yellow-400 text-sm font-mono">
             {history}
           </div>
-          <div className=" h-10 text-gray-50 mb-2 text-end text-3xl font-bold font-mono">
+          <div
+            className=" h-10 text-gray-50 mb-2 text-end text-3xl font-bold font-mono"
+            id="display"
+          >
             {display}
           </div>
 
@@ -59,6 +63,7 @@ function App() {
                   input.col
                 } ${input.row}`}
                 key={input.input}
+                id={input.id}
               >
                 {input.input}
               </button>
